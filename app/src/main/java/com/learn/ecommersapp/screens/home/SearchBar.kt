@@ -42,7 +42,7 @@ fun SearchBar(
           Row(modifier=Modifier.fillMaxSize().padding(horizontal = 16.dp),
                verticalAlignment = Alignment.CenterVertically) {
 
-               Icon(Icons.Default.Search,"search", tint= Color.Gray)
+               Icon(Icons.Default.Search,"Search", tint= Color.Gray)
 
                Spacer(modifier=Modifier.width(8.dp))
 
@@ -51,7 +51,10 @@ fun SearchBar(
                     onValueChange = onQueryChange,
                     singleLine = true,
                     modifier = modifier.fillMaxWidth(),
-                    placeholder = { Text("Search products...", color=Color.Gray, fontSize = 16.sp)},
+                    placeholder={
+                         Text("Search products...",
+                              color= Color.Gray, fontSize = 16.sp)
+                    },
 
                     keyboardOptions = KeyboardOptions(
                          imeAction = ImeAction.Search

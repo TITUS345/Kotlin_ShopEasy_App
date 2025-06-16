@@ -38,8 +38,14 @@ fun HomeScreen(){
             //Searched  Result Section
 
             //Categories Section
+            SectionTitle("Categories", "See All"){
+                /* TODO() add actions  */
+            }
 
             // Featured Products section
+            SectionTitle("Featured",  "See All"){
+                /*TODO() add actions*/
+            }
         }
     }
 }
