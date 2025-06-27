@@ -8,14 +8,17 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.unit.dp
 import com.learn.ecommersapp.model.Category
+import com.learn.ecommersapp.model.Product
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -45,7 +48,7 @@ fun HomeScreen(){
                 /* TODO() add actions  */
             }
 
-            //Moke the categories Data
+            //Mock the categories Data
 
             val categories: List<Category> = listOf(
                 Category(1,"Electronics","https://www.flaticon.com/free-icon/device_8990736"),
@@ -67,7 +70,7 @@ fun HomeScreen(){
                         isSelected = selectedCategory.value==it,
                         onClick ={
                             selectedCategory.value=it
-                            /*Do some search logig*/                        }
+                            /*Do some search logic*/                        }
                     )
                 }
             }
@@ -76,6 +79,21 @@ fun HomeScreen(){
             SectionTitle("Featured",  "See All"){
                 /*TODO() add actions*/
             }
+            //Mock the Products Data
+
+            val productsList= listOf<Product>(
+                Product("1","SmartPhone",12000.00,"https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg","1"),
+                Product("2","TV",20000.00,"https://images.pexels.com/photos/6976094/pexels-photo-6976094.jpeg","1"))
+
+            LazyRow(contentPadding = PaddingValues(horizontal = 16.dp),
+                horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                items (productsList){products->
+                    ProductsCard(products){
+                        //Handle onClick Event
+                    }
+                }
+            }
+
         }
     }
 }
