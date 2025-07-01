@@ -31,12 +31,12 @@ fun BottomNavigationBar(){
             route="Home"
         ),
         BottomBarItems(
-            title="Wishlist",
+            title="Categories",
             icon= Icons.Default.Search,
             route="Cart"
         ),
         BottomBarItems(
-            title="Favorite",
+            title="Wishlist",
             icon= Icons.Default.Favorite,
             route="Cart",
             badgeCount=5

@@ -11,6 +11,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.learn.ecommersapp.model.Product
 import com.learn.ecommersapp.model.UserProfile
 import com.learn.ecommersapp.screens.home.HomeScreen
@@ -24,13 +27,30 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            ECommersAppTheme {
-               // HomeScreen()
-                //CartScreen()
-                ProfileScreen(){
+            //Navigation System
+            val navController=rememberNavController()
+
+            //Nav Host: Manages Navigation btw Screens
+            NavHost(
+                navController = navController,
+                startDestination = "Home"
+            ) {
+                composable("Home"){
+                    HomeScreen(navController=navController,
+                        onProfileClick ={ navController.navigate("Profile")},
+                        onCartClick = {navController.navigate("Cart")}
+                    )
 
                 }
+                composable ("Cart"){
+                    CartScreen(navController=navController)
+                }
+                composable ("Profile"){
+                    ProfileScreen (navController=navController,
+                        onSignOut = {})
+                }
             }
+
         }
     }
 }

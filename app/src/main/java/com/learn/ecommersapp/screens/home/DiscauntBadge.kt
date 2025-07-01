@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 
 fun DiscountBadge(discountPercent:Int, modifier: Modifier= Modifier){
-    Box (modifier = Modifier.clip(RoundedCornerShape(4.dp)).background(Color.Red)){
+    Box (modifier = modifier.clip(RoundedCornerShape(4.dp)).background(Color.Red)){
         Text(text = "${discountPercent} OFF",
             color= Color.White,
             fontWeight = FontWeight.Bold,

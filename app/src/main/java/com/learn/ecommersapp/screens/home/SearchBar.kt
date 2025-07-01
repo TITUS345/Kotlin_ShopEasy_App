@@ -52,7 +52,7 @@ fun SearchBar(
                     singleLine = true,
                     modifier = modifier.fillMaxWidth(),
                     placeholder={
-                         Text("Search products...",
+                         Text(text="Search products...",
                               color= Color.Gray, fontSize = 16.sp)
                     },
 

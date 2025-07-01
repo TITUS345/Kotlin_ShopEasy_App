@@ -25,10 +25,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.learn.ecommersapp.model.UserProfile
 
 @Composable
-fun ProfileScreen(onSignOut:()-> Unit){
+fun ProfileScreen(navController: NavController,
+    onSignOut:()-> Unit){
     val userProfile=(
         UserProfile("22","Tarus","tarus@gmail.com")
     )
@@ -38,7 +40,7 @@ fun ProfileScreen(onSignOut:()-> Unit){
         Text(text = "Your Profile", style = MaterialTheme.typography.headlineMedium)
         //Profile Image
         Box(modifier = Modifier.padding(16.dp).size(120.dp).clip(CircleShape).background(
-            MaterialTheme.colorScheme.errorContainer),
+            MaterialTheme.colorScheme.primaryContainer),
             contentAlignment = Alignment.Center,){
             Icon(imageVector = Icons.Default.Person,
                 contentDescription = "Profile Image", modifier = Modifier.size(60.dp),

@@ -18,10 +18,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.learn.ecommersapp.model.Product
 
 @Composable
-fun CartScreen(){
+fun CartScreen(navController: NavController){
     val cartItems=listOf(
       Product("6","SmartPhone",1012.12,"https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg","2"),
         Product("6","SmartPhone",1012.12,"https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg","2")

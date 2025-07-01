@@ -15,6 +15,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -31,32 +32,32 @@ import com.learn.ecommersapp.model.Product
 @Composable
 fun CartItemCard(item: Product, onItemRemove:()-> Unit){
     Card(modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
-        ){
-        Row(modifier = Modifier.fillMaxSize(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center){
+        elevation = CardDefaults.cardElevation(2.dp)){
+        Row(modifier = Modifier.fillMaxWidth().padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically){
             Image(painter = rememberAsyncImagePainter(model = item.imageUrl),
-                contentDescription = "Cart Item Image",
+                contentDescription = "Product Image",
                 modifier = Modifier.size(80.dp).clip(RoundedCornerShape(8.dp)),
                 contentScale = ContentScale.Crop)
 
-            Spacer(modifier = Modifier.width(8.dp))
+            Spacer(modifier = Modifier.width(4.dp))
 
             Column (modifier = Modifier.weight(1f),
                 horizontalAlignment = Alignment.CenterHorizontally){
                 Text(text = item.name, style= MaterialTheme.typography.titleMedium)
 
-                Text(text = "${item.price}", style= MaterialTheme.typography.titleMedium)
+                Text(text = "$${item.price}", style= MaterialTheme.typography.titleMedium)
             }
 
             Column (horizontalAlignment = Alignment.CenterHorizontally){
-                Row(verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Center){
-                    Text(text = item.name, style = MaterialTheme.typography.titleMedium)
+                Row(verticalAlignment = Alignment.CenterVertically){
+                    Text(text = item.name,
+                        modifier = Modifier.padding(vertical = 8.dp),
+                        style = MaterialTheme.typography.bodyLarge)
                 }
                 IconButton(onClick = onItemRemove) {
                     Icon(Icons.Default.Delete, contentDescription = "Delete",
-                        modifier = Modifier.size(40.dp))
+                        modifier = Modifier.size(24.dp))
                 }
             }
 
