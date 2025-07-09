@@ -1,5 +1,6 @@
 package com.learn.ecommersapp.screens.home
 
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -29,37 +30,38 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun SearchBar(
-     query:String,
+     query: String,
      onQueryChange:(String)-> Unit,
      onSearch:()-> Unit,
-     modifier:Modifier=Modifier
+     modifier: Modifier =Modifier
 ){
-     Box(modifier = modifier.height( 50.dp)
+     Box(modifier=modifier.height(50.dp)
           .clip(RoundedCornerShape(25.dp))
-          .background(Color.LightGray.copy(alpha = 0.2f)),
-          contentAlignment = Alignment.CenterStart){
-
-          Row(modifier=Modifier.fillMaxSize().padding(horizontal = 16.dp),
-               verticalAlignment = Alignment.CenterVertically) {
-
-               Icon(Icons.Default.Search,"Search", tint= Color.Gray)
+          .background(Color.LightGray.copy(alpha=0.2f)),
+          contentAlignment = Alignment.CenterStart
+     ){
+          Row(
+               modifier=Modifier.fillMaxSize().padding(horizontal = 16.dp),
+               verticalAlignment = Alignment.CenterVertically
+          ){
+               Icon(Icons.Default.Search, "search", tint = Color.Gray)
 
                Spacer(modifier=Modifier.width(8.dp))
 
+
                TextField(
                     value=query,
-                    onValueChange = onQueryChange,
-                    singleLine = true,
-                    modifier = modifier.fillMaxWidth(),
+                    onValueChange=onQueryChange,
+                    singleLine=true,
+                    modifier=Modifier.fillMaxWidth(),
                     placeholder={
-                         Text(text="Search products...",
+                         Text("Search products...",
                               color= Color.Gray, fontSize = 16.sp)
                     },
-
-                    keyboardOptions = KeyboardOptions(
+                    keyboardOptions= KeyboardOptions(
                          imeAction = ImeAction.Search
                     ),
-                    keyboardActions = KeyboardActions(
+                    keyboardActions=KeyboardActions(
                          onSearch = {onSearch()}
                     ),
                     colors = TextFieldDefaults.colors(
@@ -67,13 +69,17 @@ fun SearchBar(
                          unfocusedContainerColor = Color.Transparent,
                          disabledContainerColor = Color.Transparent,
                          focusedIndicatorColor = Color.Transparent,
-                         unfocusedLabelColor = Color.Transparent,
+                         unfocusedIndicatorColor = Color.Transparent,
                          disabledIndicatorColor = Color.Transparent
                     )
+
+
+
                )
 
-
           }
-
      }
+
 }
+
+

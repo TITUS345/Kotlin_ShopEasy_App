@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.learn.ecommersapp.model.Category
 import com.learn.ecommersapp.model.Product
+import com.learn.ecommersapp.screens.home.navigation.Screens
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -32,15 +33,18 @@ fun HomeScreen(navController: NavController,
     ){paddingValues->
         Column(modifier = Modifier.fillMaxSize().padding(paddingValues)) {
             //Search Section
-            val searchQuery= remember { mutableStateOf("") }
+            val  searchQuery= remember { mutableStateOf("") }
             val focusManager= LocalFocusManager.current
 
             SearchBar(
-                query = searchQuery.value,
-                onQueryChange = {searchQuery.value=it},
-                onSearch = {/** Do the search Logic**/},
-                modifier = Modifier.fillMaxWidth().padding(16.dp)
-
+                query=searchQuery.value,
+                onQueryChange = { searchQuery.value=it },
+                onSearch={
+                    /** Do the search Logic **/
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
             )
 
 
@@ -48,15 +52,15 @@ fun HomeScreen(navController: NavController,
 
             //Categories Section
             SectionTitle("Categories", "See All"){
-                /* TODO() add actions  */
+                navController.navigate(Screens.CategoryList.route)
             }
 
             //Mock the categories Data
 
             val categories: List<Category> = listOf(
-                Category(1,"Electronics","https://www.flaticon.com/free-icon/device_8990736"),
+                Category(1,"Electronics","https://cdn-icons-png.flaticon.com/128/2777/2777142.png"),
 
-                Category(2,"Clothing","https://www.flaticon.com/free-icon/laundry_2946537")
+                Category(2,"Clothing","https://cdn-icons-png.flaticon.com/128/2954/2954918.png")
 
             )
             val selectedCategory=remember { mutableStateOf(0) }
@@ -80,19 +84,21 @@ fun HomeScreen(navController: NavController,
 
             // Featured Products section
             SectionTitle("Featured",  "See All"){
+                navController.navigate(Screens.ProductList.route)
                 /*TODO() add actions*/
             }
             //Mock the Products Data
 
             val productsList= listOf<Product>(
-                Product("1","SmartPhone",12000.00,"https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg","1"),
-                Product("2","TV",20000.00,"https://images.pexels.com/photos/6976094/pexels-photo-6976094.jpeg","1"))
+                Product("1","SmartPhone",12000.00,"https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg?auto=compress&cs=tinysrgb&w=300&h=300","1"),
+                Product("2","TV",20000.00,"https://images.pexels.com/photos/6976094/pexels-photo-6976094.jpeg?auto=compress&cs=tinysrgb&w=300&h=300","1"))
 
             LazyRow(contentPadding = PaddingValues(horizontal = 16.dp),
                 horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                 items (productsList){products->
                     ProductsCard(products){
                         //Handle onClick Event
+
                     }
                 }
             }

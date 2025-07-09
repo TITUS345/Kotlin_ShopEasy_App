@@ -29,15 +29,18 @@ import androidx.navigation.NavController
 import com.learn.ecommersapp.model.UserProfile
 
 @Composable
-fun ProfileScreen(navController: NavController,
-    onSignOut:()-> Unit){
+fun ProfileScreen(
+    navController: NavController,
+    onSignOut: () -> Unit
+){
     val userProfile=(
         UserProfile("22","Tarus","tarus@gmail.com")
     )
     Column (modifier = Modifier.fillMaxSize().padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally){
         //Profile Header
-        Text(text = "Your Profile", style = MaterialTheme.typography.headlineMedium)
+        Text(text = "Your Profile", style = MaterialTheme.typography.headlineMedium,
+            modifier = Modifier.padding(top=20.dp))
         //Profile Image
         Box(modifier = Modifier.padding(16.dp).size(120.dp).clip(CircleShape).background(
             MaterialTheme.colorScheme.primaryContainer),

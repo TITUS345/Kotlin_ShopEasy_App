@@ -35,7 +35,8 @@ fun CartItemCard(item: Product, onItemRemove:()-> Unit){
         elevation = CardDefaults.cardElevation(2.dp)){
         Row(modifier = Modifier.fillMaxWidth().padding(16.dp),
             verticalAlignment = Alignment.CenterVertically){
-            Image(painter = rememberAsyncImagePainter(model = item.imageUrl),
+            Image(
+                rememberAsyncImagePainter(item.imageUrl) ,
                 contentDescription = "Product Image",
                 modifier = Modifier.size(80.dp).clip(RoundedCornerShape(8.dp)),
                 contentScale = ContentScale.Crop)

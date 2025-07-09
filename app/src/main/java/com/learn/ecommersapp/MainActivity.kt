@@ -4,23 +4,16 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.learn.ecommersapp.model.Product
-import com.learn.ecommersapp.model.UserProfile
 import com.learn.ecommersapp.screens.home.HomeScreen
-import com.learn.ecommersapp.screens.home.cart.CartItemCard
 import com.learn.ecommersapp.screens.home.cart.CartScreen
+import com.learn.ecommersapp.screens.home.categories.CategoryScreen
+import com.learn.ecommersapp.screens.home.navigation.Screens
+import com.learn.ecommersapp.screens.home.products.ProductDetailsScreen
+import com.learn.ecommersapp.screens.home.products.ProductScreen
 import com.learn.ecommersapp.screens.home.profile.ProfileScreen
-import com.learn.ecommersapp.ui.theme.ECommersAppTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,19 +28,43 @@ class MainActivity : ComponentActivity() {
                 navController = navController,
                 startDestination = "Home"
             ) {
-                composable("Home"){
+                composable(Screens.Home.route){
                     HomeScreen(navController=navController,
-                        onProfileClick ={ navController.navigate("Profile")},
-                        onCartClick = {navController.navigate("Cart")}
+                        onProfileClick ={ navController.navigate(Screens.Profile.route)},
+                        onCartClick = {navController.navigate(Screens.Cart.route)}
                     )
 
                 }
-                composable ("Cart"){
+                composable (Screens.Cart.route){
                     CartScreen(navController=navController)
                 }
-                composable ("Profile"){
-                    ProfileScreen (navController=navController,
+                composable (Screens.Profile.route){
+                    ProfileScreen (
+                        navController =navController,
                         onSignOut = {})
+                }
+                composable(Screens.CategoryList.route){
+                    CategoryScreen(navController=navController)
+                }
+//                composable("ProductList"){
+//                    ProductScreen(
+//                        navController = navController
+//                   )
+//               }
+                composable(Screens.ProductDetails.route){
+                    val productId=it.arguments?.getString("productId")
+                    if (productId !==null){
+                        ProductDetailsScreen(productId)
+                    }
+                }
+                composable (Screens.ProductList.route){
+                    val categoryId=it.arguments?.getString("categoryId")
+                    if (categoryId!==null){
+                        ProductScreen(
+                            categoryId,
+                            navController = navController,
+                        )
+                    }
                 }
             }
 

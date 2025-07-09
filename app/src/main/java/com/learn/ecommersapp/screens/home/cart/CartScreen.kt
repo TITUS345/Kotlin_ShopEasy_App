@@ -24,13 +24,13 @@ import com.learn.ecommersapp.model.Product
 @Composable
 fun CartScreen(navController: NavController){
     val cartItems=listOf(
-      Product("6","SmartPhone",1012.12,"https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg","2"),
-        Product("6","SmartPhone",1012.12,"https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg","2")
+      Product("6","SmartPhone",1012.12,"https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg?auto=compress&cs=tinysrgb&w=100&h=100","2"),
+        Product("6","SmartPhone",1012.12,"https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg?auto=compress&cs=tinysrgb&w=100&h=100","2")
 
     )
     Column (modifier = Modifier.fillMaxSize().padding(top = 16.dp)){
         Text(text = "Your Cart", style = MaterialTheme.typography.headlineMedium,
-            fontWeight = FontWeight.Bold)
+            fontWeight = FontWeight.Bold, modifier = Modifier.padding(top=20.dp))
 
 
         if (cartItems.isEmpty()){
