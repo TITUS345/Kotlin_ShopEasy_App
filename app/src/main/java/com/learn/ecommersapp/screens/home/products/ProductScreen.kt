@@ -28,13 +28,20 @@ import com.learn.ecommersapp.screens.home.navigation.Screens
 fun ProductScreen(
     categoryId:String,
     navController: NavController){
+    //Fetch products from the viewModel
+
+
+    // but currently mock the hard coded data
     val productItem=listOf<Product>(
         Product("6","SmartPhone",1012.12,"https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg?auto=compress&cs=tinysrgb&w=100&h=100","2"),
         Product("2","TV",20000.09,"https://images.pexels.com/photos/6976094/pexels-photo-6976094.jpeg?auto=compress&cs=tinysrgb&w=300&h=300","1")
     )
+    //here we display the products
         Column (modifier = Modifier.fillMaxSize().padding(16.dp)){
             //Title
-            Text(text = "Product of Category ID:$categoryId",
+            Text(modifier = Modifier.padding(top=20.dp
+            ),
+                text = "Product of Category ID:$categoryId",
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold)
 

@@ -6,14 +6,17 @@ sealed class Screens(val route: String) {
     object Profile: Screens("Profile")
 
 
-    object ProductDetails:Screens("product_details/{productId}"){
-        fun createRoute(productId: String)="product_details/$productId"
+    object ProductDetails:Screens("productDetails/{productId}"){
+        fun createRoute(productId: String)="productDetails/$productId"
     }
 
-    object ProductList:Screens("product_list/{categoryId}"){
-        fun createRoute(categoryId:String)="product_list/$categoryId"
+    object ProductList:Screens("productList/{categoryId}"){
+        fun createRoute(categoryId:String)="productList/$categoryId"
     }
-    object CategoryList:Screens("category_list")
+    object CategoryList:Screens("categoryList")
+
+    object SignUp: Screens("SignUp")
+    object Login: Screens("Login")
 
 
 }

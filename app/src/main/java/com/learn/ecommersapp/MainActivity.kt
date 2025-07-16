@@ -13,7 +13,9 @@ import com.learn.ecommersapp.screens.home.categories.CategoryScreen
 import com.learn.ecommersapp.screens.home.navigation.Screens
 import com.learn.ecommersapp.screens.home.products.ProductDetailsScreen
 import com.learn.ecommersapp.screens.home.products.ProductScreen
+import com.learn.ecommersapp.screens.home.profile.LoginScreen
 import com.learn.ecommersapp.screens.home.profile.ProfileScreen
+import com.learn.ecommersapp.screens.home.profile.SignUpScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,6 +67,27 @@ class MainActivity : ComponentActivity() {
                             navController = navController,
                         )
                     }
+                }
+                composable(Screens.SignUp.route) {
+                    SignUpScreen(
+                        onNavigateToLogIn={
+                            navController.navigate(Screens.Login.route)
+                        },
+                        onSignUpSuccess={
+                            navController.navigate(Screens.Home.route)
+                        }
+                    )
+                }
+                composable(Screens.Login.route){
+                    LoginScreen(
+                        onNavigateToSignUp = {
+                            navController.navigate(Screens.SignUp.route)
+                        },
+                        onLoginSuccess = {
+                            navController.navigate(Screens.Profile.route)
+                        }
+                    )
+
                 }
             }
 
